@@ -7,10 +7,7 @@ export const getSite = () => {
     "logo": "https://i.postimg.cc/j5WKxM2R/hundred-points-1f4af.png",
     "color": "#FF0000",
     "template": "hundred1",
-    "at_apiKey": "keykhQb27OEthukic",
-    "at_base": "appdzYyfyiVAc4U3R",
-    "at_table": "tblkL8iooELB8QU1B",
-    "userId": "cl4d6ww0b008509laksf80zxw",
+    "userId": "",
     "allTags": [
       "Consumer",
       "Health",
