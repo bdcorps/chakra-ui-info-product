@@ -3,15 +3,20 @@ import {
   Center,
   Container,
   Link,
+  SimpleGrid,
   Stack,
   Text,
   VStack,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import { NextSeo } from "next-seo";
 import React, { FunctionComponent } from "react";
 import { getSite } from "../api";
 import Layout from "../components/Layout";
+import ProductCard from "../components/ProductCard";
+import ViewAllCard from "../components/ViewAllCard";
+import { getMetaImage } from "../utils";
 
 interface SiteIndexProps {}
 
@@ -29,6 +34,32 @@ const SiteIndex: FunctionComponent<SiteIndexProps> = ({ site }: any) => {
 
   return (
     <>
+      <NextSeo
+        title={`${name} | Discover new tools for your Indie projects`}
+        description="Discover new tools for your Indie projects"
+        openGraph={{
+          url: "https://puffin.launchman.io",
+          title: name,
+          description: "Discover new tools for your Indie projects",
+          images: [
+            {
+              url: getMetaImage(`https://puffin.launchman.io`),
+              width: 800,
+              height: 600,
+              alt: name,
+              type: "image/jpeg",
+            },
+          ],
+          site_name: name,
+        }}
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: logo,
+          },
+        ]}
+      />
+
       <Layout site={site}>
         <Box>
           <Container maxW="container.xl">
@@ -40,13 +71,15 @@ const SiteIndex: FunctionComponent<SiteIndexProps> = ({ site }: any) => {
                   </Text>
 
                   <Text color="gray.500">
-                    169 Founders Have Joined the Challenge
+                    Puffin Tools is a curated directory of tools for startups.
+                    Find tools for growing your startup, reaching new customers,
+                    and improving your brand
                   </Text>
                 </VStack>
 
                 <Box w="full">
                   <Wrap spacing={3} justify="center" w="full">
-                    {allTags.map((tag: any, i: any) => {
+                    {allTags.slice(0, 20).map((tag: string, i: any) => {
                       return (
                         <WrapItem key={`tag_${i}`}>
                           <Center
@@ -73,9 +106,6 @@ const SiteIndex: FunctionComponent<SiteIndexProps> = ({ site }: any) => {
 
             <Box pt={20}>
               <Container maxW="container.xl" p={2}>
-                <Text fontSize="2xl" fontWeight={600} textAlign="center" p={4}>
-                  Leaderboard
-                </Text>
                 <VStack spacing={10}>
                   <Stack
                     spacing={10}
@@ -83,18 +113,21 @@ const SiteIndex: FunctionComponent<SiteIndexProps> = ({ site }: any) => {
                     w="full"
                     direction={["column", "row"]}
                   >
-                    {/* <SimpleGrid
+                    {/* <Box w={300}>
+            <CategoryBrowser tags={uniqueCategories} />
+          </Box> */}
+                    <SimpleGrid
                       minChildWidth={[200, 300]}
                       spacing={10}
                       flex="2"
                     >
-                      {pages.map((page: any, i: number) => {
+                      {pages.slice(0, 5).map((page: any, i: number) => {
                         return (
                           <ProductCard product={page.data} key={`key_${i}`} />
                         );
                       })}
                       <ViewAllCard />
-                    </SimpleGrid> */}
+                    </SimpleGrid>
                   </Stack>
                 </VStack>
               </Container>

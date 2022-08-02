@@ -1,6 +1,8 @@
 import { NextSeo } from "next-seo";
 import React, { FunctionComponent } from "react";
 import { getMetaImage } from "../utils";
+import Footer from "./Footer";
+import Header from "./Header";
 
 interface LayoutProps {
   site: any;
@@ -43,6 +45,9 @@ const Layout: FunctionComponent<LayoutProps> = ({
           },
         ]}
       />
+      <Header name="Chakra UI" navLinks={navLinks} />
+      {children}
+      <Footer name="Chakra UI" />
     </>
   );
 };

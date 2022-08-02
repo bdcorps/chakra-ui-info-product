@@ -204,3 +204,10 @@ export const getPage = () => {
     "revenueRank": 0
   }
 }
+
+export const getPagesWithTag = (tag: string) => {
+  const pages = getSite().pages.filter((page: any) => {
+    return page.data.tags.includes(tag)
+  })
+  return pages;
+}

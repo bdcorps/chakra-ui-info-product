@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React, { FunctionComponent } from "react";
-import { getPage, getSite } from "../../api";
+import { getPagesWithTag, getSite } from "../../api";
 import Layout from "../../components/Layout";
 
 interface CategoryPageProps {}
@@ -74,8 +74,9 @@ const CategoryPage: FunctionComponent<CategoryPageProps> = ({
 };
 
 export async function getServerSideProps({ params }: any) {
+  const tag: string = params.tag;
   return {
-    props: { site: getSite(), products: getPage() },
+    props: { site: getSite(), products: getPagesWithTag(tag) },
   };
 }
 

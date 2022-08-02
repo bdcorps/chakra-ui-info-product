@@ -24,7 +24,7 @@ const Tags: FunctionComponent<TagsProps> = ({ site }: TagsProps) => {
         <VStack>
           <Container textAlign="center" flex="1" maxW="container.lg">
             <Heading size="2xl" mb={4}>
-              All Categories
+              All Tags
             </Heading>
             <Text fontSize="xl">Discover tools by tag name</Text>
           </Container>
